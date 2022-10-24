@@ -10,6 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "axios": "^0.27.2",
-    "cheerio": "*"
+    "cheerio": "*",
+    "express": "^4.18.2"
   }
 }

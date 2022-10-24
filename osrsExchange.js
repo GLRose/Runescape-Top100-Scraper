@@ -2,6 +2,10 @@ const axios = require("axios");
 const cheerio = require("cheerio");
 const url = "https://secure.runescape.com/m=itemdb_oldschool/top100";
 const fs = require("fs");
+const express = require("express");
+const app = express();
+
+const PORT = 3000;
 // Async function to scrape the data
 async function scrapeData() {
   try {
@@ -29,7 +33,12 @@ async function scrapeData() {
     //Create a result object to join items[] and tradeCounts[] as one object
     const result = {};
     items.forEach((key, i) => (result[key] = tradeCounts[i]));
-    console.log(result);
+    console.log(result)
+
+    //Routes
+    app.get('/', function (req, res) {
+      res.json(result)
+    })
     //Write our data to a singular json file
     fs.writeFile("items.json", JSON.stringify(result, null, 2), (err) => {
       if (err) {
@@ -43,3 +52,7 @@ async function scrapeData() {
   }
 }
 scrapeData();
+
+app.listen(3000, function (req, res) {
+  console.log("Server is running at port 3000");
+});
