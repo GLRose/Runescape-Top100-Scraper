@@ -5,7 +5,7 @@ const fs = require("fs");
 const express = require("express");
 const app = express();
 
-const PORT = 3000;
+// const PORT = 3000;
 // Async function to scrape the data
 async function scrapeData() {
   try {
@@ -53,6 +53,6 @@ async function scrapeData() {
 }
 scrapeData();
 
-app.listen(3000, function (req, res) {
-  console.log("Server is running at port 3000");
-});
+// app.listen(3000, function (req, res) {
+//   console.log("Server is running at port 3000");
+// });
